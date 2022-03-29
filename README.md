@@ -6,3 +6,6 @@
 
 **0.0.1** 
 - Add basic react parts
+
+**0.1.0**
+- Add Header and Footer
