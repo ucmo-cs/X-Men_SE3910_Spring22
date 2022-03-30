@@ -1,0 +1,14 @@
+.logo{
+    width: 19em;
+    height: auto;
+    padding: 0.5em;
+}
+.navbar-header{
+    background-color: #e4e4e4;
+    border-bottom: 1.25em solid #63a103;
+}
+.nav-icon{
+    margin: 1em;
+    width: 3em;
+    height: auto;
+}

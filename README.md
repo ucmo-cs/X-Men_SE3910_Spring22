@@ -4,5 +4,8 @@
 **March 24, 2022**
 - Initial commit with template project
 
-**0.0.1** 
+**March 25, 2022** 
 - Add basic react parts
+
+**March 30, 2022**
+- Add Header and Footer
