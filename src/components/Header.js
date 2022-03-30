@@ -1,22 +1,28 @@
-import React from 'react';
 import './Header.css';
-import { Navbar, Container, Dropdown } from 'react-bootstrap';
+import React from 'react';
+import { Container, Dropdown, Navbar } from 'react-bootstrap';
 
 function ShowUser(props) {
+    const isApprover = props.isApprover;
     const isLoggedIn = props.isLoggedIn;
+    var icon = 'defaultIcon';
+
+    isApprover === true ? (icon = 'appr_icon') : (icon = 'req_icon');
 
     if (isLoggedIn) {
         return (
             <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-                <img src={require('./images/defaultIcon.png')} alt='Icon' className='nav-icon' />
+                <img src={require('./images/' + icon + '.png')} alt='Icon' className='nav-icon' />
                 <Dropdown>
                     <Dropdown.Toggle variant='success' id='dropdown-basic' size='md'>
                         Username
+                        {/* Add stuff to get person name stuff */}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href=""> Approver</Dropdown.Item>
+                        <Dropdown.Item href="">{isApprover === true ? 'Approver' : 'Requester'}</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item href="#insertFunction"> Log Out</Dropdown.Item>
+                        <Dropdown.Item href="/login">Log Out</Dropdown.Item>
+                        {/* Add function to log user out and something props */}
                     </Dropdown.Menu>
                 </Dropdown>
             </Navbar.Collapse>
@@ -32,7 +38,7 @@ const Header = () => {
             <Container>
                 <Navbar.Brand> <img src={require('./images/bank_logo.png')} alt='Commerce Bank Logo' className='logo' /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <ShowUser isLoggedIn={false} />
+                <ShowUser isLoggedIn={true} isApprover={true} />
             </Container>
         </Navbar>
     );

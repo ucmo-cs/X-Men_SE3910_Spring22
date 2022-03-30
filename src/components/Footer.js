@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 const FooterStyle = styled.div`
     background-color: #e4e4e4;
-    border-top: 20px solid #63a103;
+    border-top: 1.25em solid #63a103;
+    padding: 1.5em;
     text-align: center;
-    padding: 20px;
 `;
 
 const Footer = () => {
