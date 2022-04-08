@@ -6,6 +6,10 @@ const FooterStyle = styled.div`
     background-color: #e4e4e4;
     border-top: 1.25em solid #63a103;
     padding: 1.5em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     text-align: center;
 `;
 

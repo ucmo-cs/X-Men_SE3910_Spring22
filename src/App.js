@@ -1,4 +1,4 @@
-import Footer from './components/Footer.js'
+import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
