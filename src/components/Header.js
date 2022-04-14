@@ -1,13 +1,15 @@
 import './Header.css';
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Dropdown, Navbar } from 'react-bootstrap';
 
 function ShowUser(props) {
     const isApprover = props.isApprover;
-    const isLoggedIn = props.isLoggedIn;
+    const [isLoggedIn] = useState(props.isLoggedIn);
+
     var icon = 'defaultIcon';
 
     isApprover === true ? (icon = 'appr_icon') : (icon = 'req_icon');
+    
 
     if (isLoggedIn) {
         return (
@@ -32,16 +34,19 @@ function ShowUser(props) {
     }
 };
 
-const Header = () => {
+export default function Header(props) {
+
+    const [isApprover] = useState(true);
+    const [isLoggedIn] = useState(props.isLoggedIn);
+    
     return (
         <Navbar varient="pills" className='navbar-header'>
             <Container>
                 <Navbar.Brand> <img src={require('./images/bank_logo.png')} alt='Commerce Bank Logo' className='logo' /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <ShowUser isLoggedIn={true} isApprover={true} />
+                <ShowUser isLoggedIn={isLoggedIn} isApprover={isApprover} />
             </Container>
         </Navbar>
     );
 };
 
-export default Header;
