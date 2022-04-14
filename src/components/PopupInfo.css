@@ -1,0 +1,59 @@
+.btnApp{
+    width: 7.5em;
+    height: 2.55em;
+    padding: .5em .5em 2em .5em !important;
+    background-color: #63a103 !important;
+    border-color: #63a103 !important;
+}
+
+.btnApp:hover {
+    background-color: #507519 !important;
+}
+
+.btnApp:focus {
+    box-shadow: 0 0 0 0.2rem #507519 !important;
+}
+
+.btnDeny{
+    width: 7.5em;
+    height: 2.55em;
+    padding: .5em .5em 2em .5em !important;
+    background-color: #006649 !important;
+    border: .1em solid #006649 !important;
+}
+
+.btnDeny:hover {
+    background-color: #0d8260 !important;
+}
+
+.btnDeny:focus {
+    box-shadow: 0 0 0 0.2rem #0d8260 !important;
+}
+
+.btnCancel{
+    width: 9em;
+    height: 2.55em;
+    padding: .5em .5m 2em .5em !important;
+    color: #8c8c8c !important;
+    border: .1em solid #8c8c8c !important;
+    background-color: #ffffff !important;
+}
+
+.btnCancel:hover {
+    color: #3e3e3e !important;
+    border: .1em solid #3e3e3e !important;
+    background-color: #dbdada !important;
+}
+
+.btnCancel:focus {
+    box-shadow: 0 0 0 0.2rem #3e3e3e !important;
+}
+
+.bodyText{
+    background-color: #f2f2f2;
+    padding: 1em 1em 1em 1em;
+}
+
+.statusRow {
+    padding: 0.7em 0em 0em 0em;
+}
