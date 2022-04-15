@@ -1,11 +1,10 @@
-package com.example.SpringReact.service;
+package com.service;
 
-import com.example.SpringReact.domain.Account;
-import com.example.SpringReact.domain.Book;
-import com.example.SpringReact.domain.Login;
-import com.example.SpringReact.domain.User;
-import com.example.SpringReact.repository.AccountRepository;
-import com.example.SpringReact.repository.UserRepository;
+import com.domain.Account;
+import com.domain.Login;
+import com.domain.User;
+import com.repository.AccountRepository;
+import com.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

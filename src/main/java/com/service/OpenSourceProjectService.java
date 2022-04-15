@@ -1,10 +1,7 @@
-package com.example.SpringReact.service;
+package com.service;
 
-
-import com.example.SpringReact.domain.Book;
-import com.example.SpringReact.domain.BookRepository;
-import com.example.SpringReact.domain.OpenSourceProjects;
-import com.example.SpringReact.repository.OpenSourcePrjectRepository;
+import com.domain.OpenSourceProjects;
+import com.repository.OpenSourcePrjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

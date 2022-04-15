@@ -1,7 +1,6 @@
-package com.example.SpringReact.repository;
+package com.repository;
 
-import com.example.SpringReact.domain.Account;
-import com.example.SpringReact.domain.OpenSourceProjects;
+import com.domain.OpenSourceProjects;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OpenSourcePrjectRepository extends JpaRepository<OpenSourceProjects,Long> {

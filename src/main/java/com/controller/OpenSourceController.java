@@ -1,10 +1,9 @@
-package com.example.SpringReact.controller;
+package com.controller;
 
-import com.example.SpringReact.domain.Book;
-import com.example.SpringReact.domain.OpenSourceProjects;
-import com.example.SpringReact.domain.User;
-import com.example.SpringReact.service.OpenSourceProjectService;
-import com.example.SpringReact.service.UserService;
+import com.domain.OpenSourceProjects;
+import com.domain.User;
+import com.service.OpenSourceProjectService;
+import com.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.SpringReact.domain;
+package com.domain;
 
 
 import lombok.AllArgsConstructor;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor

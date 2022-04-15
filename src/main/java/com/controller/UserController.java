@@ -1,10 +1,10 @@
-package com.example.SpringReact.controller;
+package com.controller;
 
-import com.example.SpringReact.domain.Login;
-import com.example.SpringReact.domain.User;
-import com.example.SpringReact.repository.UserRepository;
-import com.example.SpringReact.service.SecurityService;
-import com.example.SpringReact.service.UserService;
+import com.domain.Login;
+import com.domain.User;
+import com.repository.UserRepository;
+import com.service.SecurityService;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

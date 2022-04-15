@@ -1,4 +1,4 @@
-package com.example.SpringReact.service;
+package com.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
