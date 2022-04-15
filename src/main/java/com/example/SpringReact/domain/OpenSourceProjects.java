@@ -27,12 +27,18 @@ public class OpenSourceProjects {
     @JoinColumn(name="user_id", nullable = false)
     private User requester;
 
+    private Date dateapproved;
+
+    private Date daterequested;
+
+    private String description;
+
     private String license;
 
     private String state;
 
-    private Date daterequested;
+    private String status;
 
-    private Date dateapproved;
+    private String url;
 
 }
