@@ -1,9 +1,11 @@
 import React from 'react';
+import Table from '../components/Table.js';
 
 const MainPage = () => {
     return (
         <div>
-            Home page
+            <Table />
+
         </div>
     );
 };
