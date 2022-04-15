@@ -9,3 +9,12 @@
 
 **March 30, 2022**
 - Add Header and Footer
+
+**April 15, 2022**
+- Backend
+    - Add backend Spring Boot files
+
+- Frontend
+    - Add placeholder blank table on the main page
+    - Add a popup to display project info with placeholder data
+    - Move header render location
