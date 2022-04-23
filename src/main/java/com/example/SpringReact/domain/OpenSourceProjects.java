@@ -27,9 +27,9 @@ public class OpenSourceProjects {
     @JoinColumn(name="user_id", nullable = false)
     private User requester;
 
-    private Date dateapproved;
+    private String dateapproved;
 
-    private Date daterequested;
+    private String daterequested;
 
     private String description;
 

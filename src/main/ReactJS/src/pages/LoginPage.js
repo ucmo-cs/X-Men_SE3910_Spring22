@@ -5,7 +5,7 @@ import Header from '../components/Header.js';
 const LoginPage = () => {
     return (
         <div>
-            <Header isLoggedIn={false}/>
+            <Header isLoggedIn={true}/>
             <Login />
         </div>
     );

@@ -8,10 +8,7 @@ import com.example.SpringReact.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
@@ -28,18 +25,31 @@ public class OpenSourceController {
     public ResponseEntity<?> save(@RequestBody OpenSourceProjects openSourceProject){
 
         System.out.println("Project " + openSourceProject.getProject());
-        int user_id = 1;
-        User requester = userService.findUser((long) user_id);
+        String user_nmae = "test@gmail.com";
+        User requester = userService.findUser(user_nmae);
         openSourceProject.setRequester(requester);
 
         System.out.println("License " + openSourceProject.getLicense());
         System.out.println("DateRequested " + openSourceProject.getDaterequested());
         System.out.println("Date Approved " + openSourceProject.getDateapproved());
 
-
         return new ResponseEntity<>(openSourceProjectService.create(openSourceProject), HttpStatus.CREATED);
 
     }
+
+
+    @CrossOrigin
+    @GetMapping("/opensources")
+    public ResponseEntity<?> findAll(){
+
+        System.out.println("findAll : ");
+        return new ResponseEntity<>(openSourceProjectService.findAll(), HttpStatus.OK);
+
+    }
+
+
+
+
 
 }
 

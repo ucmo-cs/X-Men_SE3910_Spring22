@@ -36,8 +36,8 @@ public class UserController {
 
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> creatUser(@PathVariable int id){
-        Optional<User> user = userRepository.findById((long) id);
+    public ResponseEntity<User> creatUser(@PathVariable String id){
+        Optional<User> user = userRepository.findById(id);
 
         if (!user.isPresent()){
             throw new UserNotFoundException(String.format("ID[%d] not found", id));

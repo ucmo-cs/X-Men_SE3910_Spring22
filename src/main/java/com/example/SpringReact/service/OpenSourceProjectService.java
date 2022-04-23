@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class OpenSourceProjectService {
@@ -20,4 +22,14 @@ public class OpenSourceProjectService {
     public OpenSourceProjects create(OpenSourceProjects openSourceProject){
         return openSourcePrjectRepository.save(openSourceProject);
     }
+
+
+    @Transactional(readOnly = true)
+    public List<OpenSourceProjects> findAll(){
+        return openSourcePrjectRepository.findAll();
+    }
+
+
+
+
 }
