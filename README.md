@@ -18,3 +18,13 @@
     - Add placeholder blank table on the main page
     - Add a popup to display project info with placeholder data
     - Move header render location
+
+**April 25, 2022**
+- Backend
+    - Add method to pull all projects from database
+    - Fix login method
+    - Remove references to book and account repo's
+
+- Frontend
+    - Add popup to add projects
+    - Implement dynamic table

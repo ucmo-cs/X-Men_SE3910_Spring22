@@ -1,6 +1,5 @@
 package com.example.SpringReact.controller;
 
-import com.example.SpringReact.domain.Book;
 import com.example.SpringReact.domain.OpenSourceProjects;
 import com.example.SpringReact.domain.User;
 import com.example.SpringReact.service.OpenSourceProjectService;
@@ -25,13 +24,9 @@ public class OpenSourceController {
     public ResponseEntity<?> save(@RequestBody OpenSourceProjects openSourceProject){
 
         System.out.println("Project " + openSourceProject.getProject());
-        String user_nmae = "test@gmail.com";
-        User requester = userService.findUser(user_nmae);
+        String user_name = "test@gmail.com";
+        User requester = userService.findUser(user_name);
         openSourceProject.setRequester(requester);
-
-        System.out.println("License " + openSourceProject.getLicense());
-        System.out.println("DateRequested " + openSourceProject.getDaterequested());
-        System.out.println("Date Approved " + openSourceProject.getDateapproved());
 
         return new ResponseEntity<>(openSourceProjectService.create(openSourceProject), HttpStatus.CREATED);
 

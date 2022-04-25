@@ -1,13 +1,10 @@
 import Footer from './components/Footer.js';
-import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login.js';
 
 
 function setToken(userToken) {
-  console.log("tokenTEst")
-  console.log(userToken)
   sessionStorage.setItem('token', JSON.stringify(userToken));
 }
 
@@ -27,7 +24,7 @@ function App() {
     return (
       <div>
         <Routes>
-          <Route path="/" exact={true} element={<LoginPage />} />
+          <Route path="/" exact={true} element={<Login setToken={setToken} />} />
           <Route path="/login" exact={true} element={<Login setToken={setToken}/>} />
         </Routes>
         <Footer />
@@ -40,7 +37,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" exact={true} element={<LoginPage />} />
+        <Route path="/" exact={true} element={<Login setToken={setToken}/>} />
         <Route path="/home" exact={true} element={<MainPage />} />
         <Route path="/login" exact={true} element={<Login setToken={setToken}/>} />
       </Routes>

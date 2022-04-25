@@ -29,7 +29,11 @@ public class OpenSourceProjects {
 
     private String dateapproved;
 
+    private String timeapproved;
+
     private String daterequested;
+
+    private String timerequested;
 
     private String description;
 

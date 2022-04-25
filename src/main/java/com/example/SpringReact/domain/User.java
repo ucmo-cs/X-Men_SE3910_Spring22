@@ -18,13 +18,14 @@ public class User {
     @Id
     private String name;
 
+    private String firstname;
+
+    private String lastname;
+
     private String joinDate;
 
     private String password;
 
-    private String ssn;
-
-    private Integer roles;
-
+    private Boolean approver;
 
 }

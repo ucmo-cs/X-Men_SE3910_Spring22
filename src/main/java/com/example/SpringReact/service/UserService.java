@@ -1,10 +1,7 @@
 package com.example.SpringReact.service;
 
-import com.example.SpringReact.domain.Account;
-import com.example.SpringReact.domain.Book;
 import com.example.SpringReact.domain.Login;
 import com.example.SpringReact.domain.User;
-import com.example.SpringReact.repository.AccountRepository;
 import com.example.SpringReact.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +14,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private AccountRepository accountRepository;
 
     public boolean validateUserLogin(Login login) {
        Optional<User> user = userRepository.findById(login.getName());

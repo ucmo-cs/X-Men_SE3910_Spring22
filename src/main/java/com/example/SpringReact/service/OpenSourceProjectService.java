@@ -1,8 +1,6 @@
 package com.example.SpringReact.service;
 
 
-import com.example.SpringReact.domain.Book;
-import com.example.SpringReact.domain.BookRepository;
 import com.example.SpringReact.domain.OpenSourceProjects;
 import com.example.SpringReact.repository.OpenSourcePrjectRepository;
 import lombok.RequiredArgsConstructor;
