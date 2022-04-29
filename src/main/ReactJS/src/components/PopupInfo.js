@@ -1,73 +1,153 @@
 import './PopupInfo.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export default function PopupInfo(props) {
-    const [show, setShow] = useState(false);
+export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAdded, setAdd }) {
 
-    /*
-    Use below when passing data through table component
-    const [projectData, setProjectData] = useState(props.projectData);
-    const isApprover = props.isApprover;
-    */
 
-    //Temp direct implementation until API implemented
-    const [projectData, setProjectData] = useState({
-        appDate: 'Approved Date',
-        desc: 'Temporary Description',
-        license: 'License',
-        projName: 'Project Name',
-        reqDate: 'Request Date',
-        reqName: 'Requester Name',
-        status: 'Unapproved',
-        url: 'url.com'
-    });
-    const [isApprover] = useState(true);
 
-    //Get and format today's date
+    console.log(user.name + " "+ rowID+" "+  reqID )    ;
+    //Set Constants
     const date = new Date();
-    const currentDay = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+    //const [displayButton, setButton] = useState()
+    const [msg, setMsg] = useState();
+    const [proj, setProj] = useState({
+        project: "",
+        dateapproved: '',
+        timeapproved: '',
+        daterequested: "",
+        timerequested: "",
+        description: "",
+        license: "",
+        status: "",
+        url: ""
+    });
+    const [requester, setRequester] = useState({});
+    const [showAlert, setAlert] = useState(false);
+    const [submitProj, setSubmit] = useState(false);
 
-    //Functions
-    const handleClose = () => setShow(false);
-    const handleOpen = () => setShow(true);
+    var displayButton;
 
-    const handleApprove = () => {
-        setProjectData({
-            ...projectData,
-            ...{ appDate: currentDay },
-            ...{ status: "Approved" }
+    if (user.name !== requester.name && user.approver === true && proj.status === "Unapproved") {
+        displayButton= true;
+    } else {
+        displayButton= false;
+    }
+
+    //Use effect to get requester and row data - only calls when rowID or reqID changes
+    useEffect(() => {
+        if (showModal) {
+
+
+            fetch("http://localhost:8080/jpa/users/" + reqID, { method: "GET" })
+                .then(res => res.json())
+                .then(res => {
+                    setRequester(res)
+                });
+
+            fetch("http://localhost:8080/opensources/" + rowID, { method: "GET" })
+                .then(res => res.json())
+                .then(res => {
+                    setProj(res)
+                });
+
+            console.log(user.name + " "+ requester.name+" "+  user.approver+  " " +proj.status )    ;
+
+        }
+    }, [rowID, reqID])
+
+
+
+    //User effect to update approval data, changes the prjadded state to re-render ProjectList.js
+    useEffect(() => {
+        if (submitProj) {
+
+            fetch('http://localhost:8080/updtsources', {
+
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(proj),
+                credentials: 'same-origin',
+
+            }).then((res) => {
+                return res.json();
+
+            }).then((res) => {
+                setAdd(!prjAdded);
+                setSubmit(false);
+            }).catch((error) => {
+                console.log(error);
+                setAlert(true);
+                setMsg("Was not able to update project");
+                setSubmit(false);
+            });
+        }
+    }, [submitProj]);
+
+    //Other functions
+    const setDate = (status) => {
+        const currentDay = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+        const currentTime = date.toLocaleTimeString();
+
+        setProj({
+            ...proj,
+            ...{ dateapproved: currentDay },
+            ...{ timeapproved: currentTime },
+            ...{ status: status }
         });
     }
 
-    const handleDeny = () => {
+    const handleApprove = (e) => {
+        e.preventDefault();
 
-        setProjectData({
-            ...projectData,
-            ...{ appDate: currentDay },
-            ...{ status: "Denied" }
-        });
+        setDate("Approved");
+        setSubmit(true);
+    }
+
+    const handleDeny = (e) => {
+        e.preventDefault();
+
+        setDate("Denied");
+        setSubmit(true);
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+
+        fetch("http://localhost:8080/removesource/" + proj.project_id, { method: "DELETE" })
+            .then(res => {
+                onHide();
+                setAdd(!prjAdded);
+            }).catch((error) => {
+                console.log(error);
+                showAlert(true);
+                setMsg("Unable to delete Project");
+            });
     }
 
     return (
         <div>
-            <Button onClick={handleOpen}>
-                Popup
-            </Button>
-
             <Modal
-                show={show}
-                onHide={handleClose}
+                show={showModal}
+                onHide={onHide}
                 size="lg"
                 centered
             >
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        {projectData.projName} - {projectData.reqName}
+                        {proj.project} - {requester.firstname} {requester.lastname}
                     </Modal.Title>
                 </Modal.Header>
+
+                <Alert show={showAlert} variant='danger' onClose={() => setAlert(false)} dismissible>
+                    <Alert.Heading>{msg}</Alert.Heading>
+                </Alert>
+
                 <Modal.Body>
                     <Container>
                         <div className="bodyText">
@@ -75,31 +155,32 @@ export default function PopupInfo(props) {
                                 <Col> <b>Project Description:</b> </Col>
                             </Row>
                             <Row>
-                                <Col> {projectData.desc} <br /> <br /> </Col>
+                                <Col> {proj.description}<br /> <br /> </Col>
                             </Row>
 
                             <Row>
-                                <Col> <b>License: </b> {projectData.license} </Col>
+                                <Col> <b>License: </b> {proj.license} </Col>
 
-                                <Col> <b>URL: </b> {projectData.url} </Col>
+                                <Col> <b>URL: </b> {proj.url} </Col>
                             </Row>
                         </div>
                         <Row className="statusRow justify-content-md-end">
-                            <Col> 
-                                <b>Status - {projectData.status} {" "}
-                                {projectData.status !== "Unapproved" ? projectData.appDate : null}</b> 
+                            <Col>
+                                <b>Status - {proj.status} {" "}
+                                    {proj.status !== "Unapproved" ? proj.dateapproved : null}</b>
                             </Col>
 
-                            <Col> <b>Requested - {projectData.reqDate}</b> </Col>
+                            <Col> <b>Requested - {proj.daterequested}</b> </Col>
                         </Row>
                     </Container>
                 </Modal.Body>
+
                 <Modal.Footer>
                     <Container>
                         <Row>
                             <Col xs={2}>
                                 <Button
-                                    className={isApprover && projectData.status === "Unapproved" ? "btnApp" : "invisible"}
+                                    className={displayButton ? "btnApp" : "invisible"}
                                     onClick={(handleApprove)}
                                 >
                                     Approve
@@ -107,15 +188,18 @@ export default function PopupInfo(props) {
                             </Col>
                             <Col xs={7}>
                                 <Button
-                                    className={isApprover && projectData.status === "Unapproved" ? "btnDeny" : "invisible"}
+                                    className={displayButton ? "btnDeny" : "invisible"}
                                     onClick={(handleDeny)}
                                 >
                                     Deny
                                 </Button>
                             </Col>
                             <Col>
-                                <Button className="btnCancel" onClick={(handleClose)}>
-                                    Cancel
+                                <Button
+                                    className={requester.name === user.name ? "btn" : "invisible"}
+                                    onClick={handleDelete}
+                                >
+                                    Delete Request
                                 </Button>
                             </Col>
                         </Row>

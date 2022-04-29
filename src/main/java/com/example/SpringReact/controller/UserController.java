@@ -29,6 +29,7 @@ public class UserController {
     @Autowired
     private SecurityService securityService;
 
+    @CrossOrigin
     @GetMapping("/users")
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -36,7 +37,7 @@ public class UserController {
 
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> creatUser(@PathVariable String id){
+    public ResponseEntity<User> findUser(@PathVariable String id){
         Optional<User> user = userRepository.findById(id);
 
         if (!user.isPresent()){

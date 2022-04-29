@@ -1,14 +1,46 @@
 @media all and (min-width: 480px) {
+
+  .loginAlert{
+    width: 100%;
+  }
+
+  .loginAlertHeading{
+    text-align: center;
+    font-size: medium !important;
+  }
+
   .Login {
     padding: 60px 0;
+    height: 100%;
   }
 
   .Login form {
     margin: 0 auto;
-    max-width: 320px;
+    max-width: 20em;
+    background-color: #e4e4e4;
+    padding: 1em 1em 1em 1em;
+  }
+
+  .formBackground{
+    background-color: #e4e4e4;
+    box-sizing: border-box;
+    margin: auto;
+    width: 30%;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+  }
+
+  .formBackground h3{
+    text-align: center;
   }
    
   .Login button {
     margin-top: 10px;
+  }
+
+  .title {
+    text-align: center;
+    color: #006747;
+    padding-bottom: 2.5em;
   }
 }

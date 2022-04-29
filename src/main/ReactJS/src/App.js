@@ -1,7 +1,7 @@
 import Footer from './components/Footer.js';
-import MainPage from './pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login.js';
+import ProjectList from './components/ProjectList.js';
 
 
 function setToken(userToken) {
@@ -24,8 +24,8 @@ function App() {
     return (
       <div>
         <Routes>
-          <Route path="/" exact={true} element={<Login setToken={setToken} />} />
-          <Route path="/login" exact={true} element={<Login setToken={setToken}/>} />
+          <Route path="/" exact={true} element={<Login setToken={setToken} getToken={getToken}/>} />
+          <Route path="/login" exact={true} element={<Login setToken={setToken} getToken={getToken}/>} />
         </Routes>
         <Footer />
       </div>
@@ -37,11 +37,10 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" exact={true} element={<Login setToken={setToken}/>} />
-        <Route path="/home" exact={true} element={<MainPage />} />
-        <Route path="/login" exact={true} element={<Login setToken={setToken}/>} />
+        <Route path="/" exact={true} element={<Login setToken={setToken} getToken={getToken}/>} />
+        <Route path="/home" exact={true} element={<ProjectList />} />
+        <Route path="/login" exact={true} element={<Login setToken={setToken} getToken={getToken}/>} />
       </Routes>
-      <Footer />
     </div>
   );
 }
