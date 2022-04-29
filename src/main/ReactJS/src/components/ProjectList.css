@@ -1,0 +1,13 @@
+.table {
+    overflow: auto;
+    table-layout: auto;
+    margin-bottom: 60%;
+    }
+.containter {
+    max-width: 100%;
+    width: 100%;
+}
+
+.tableContainer{
+    margin-bottom: 1em;
+}

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: book-service
+    name: cb-osp
 
   h2:
     console:
@@ -20,7 +20,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 
 

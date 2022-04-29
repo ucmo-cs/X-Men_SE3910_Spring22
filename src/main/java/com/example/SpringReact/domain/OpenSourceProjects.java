@@ -39,8 +39,6 @@ public class OpenSourceProjects {
 
     private String license;
 
-    private String state;
-
     private String status;
 
     private String url;
