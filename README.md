@@ -28,3 +28,14 @@
 - Frontend
     - Add popup to add projects
     - Implement dynamic table
+
+**April 27, 2022**
+- Backend
+  - Implement update, findProject, and delete API
+
+- Frontend
+  - Add create request button
+  - Fix table placement
+  - Clicking on table row opens info
+  - Allow approving and denying of projects
+  - Make log in page look better
