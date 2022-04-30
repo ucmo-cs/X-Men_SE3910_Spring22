@@ -1,12 +1,12 @@
-import PopupInfo from './PopupInfo.js';
-import Header from './Header.js'
-import React, { useEffect, useState } from 'react';
-import Table from 'react-bootstrap/Table';
-import { useLocation } from 'react-router-dom';
-import PopupAdd from './PopupAdd.js';
-import Footer from './Footer.js';
 import './ProjectList.css';
-import { Container, Row } from 'react-bootstrap';
+import Footer from './Footer.js';
+import Header from './Header.js'
+import PopupAdd from './PopupAdd.js';
+import PopupInfo from './PopupInfo.js';
+import Table from 'react-bootstrap/Table';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 function ProjectList() {
@@ -14,25 +14,12 @@ function ProjectList() {
     const location = useLocation();
     const { name } = location.state;
 
-    const [rowKey, setRowKey] = useState();
-    const [reqID, setReqID] = useState();
-
+    const [prjAdded, setAdd] = useState(true);
     const [projects, setProjects] = useState([]);
+    const [reqID, setReqID] = useState();
+    const [rowKey, setRowKey] = useState();
     const [showModal, setShowModal] = useState(false);
     const [user, setUser] = useState({});
-    const [prjAdded, setAdd] = useState(true);
-
-    function handleRowClick(e) {
-
-        const id = e.currentTarget.getAttribute('rowid');
-
-        const reqId = e.currentTarget.getAttribute('reqid');
-        setShowModal(!showModal);
-        setRowKey(id);
-
-        setReqID(reqId);
-    }
-
 
     //Fetch projects
     useEffect(() => {
@@ -52,11 +39,16 @@ function ProjectList() {
             });
     }, [name])
 
-    // var filteredProjects = projects.filter(function (el) {
-    //     return (
-    //         el.
-    //     )
-    // });
+    function handleRowClick(e) {
+
+        const id = e.currentTarget.getAttribute('rowid');
+
+        const reqId = e.currentTarget.getAttribute('reqid');
+        setShowModal(!showModal);
+        setRowKey(id);
+
+        setReqID(reqId);
+    }
 
     return (
         <Container fluid>
@@ -64,8 +56,10 @@ function ProjectList() {
                 <Header isLoggedIn={true} isApprover={user.approver} user={user} />
             </Row>
 
-            <Row>
-                <PopupAdd user={user} prjAdded={prjAdded} setAdd={setAdd} />
+            <Row className="reqButton">
+                <Col>
+                    <PopupAdd user={user} prjAdded={prjAdded} setAdd={setAdd} />
+                </Col>
             </Row>
 
             <Row>

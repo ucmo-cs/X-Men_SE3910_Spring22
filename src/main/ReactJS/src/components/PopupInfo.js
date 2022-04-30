@@ -1,18 +1,15 @@
 import './PopupInfo.css';
-import React, { useEffect, useState } from "react";
+import Alert from "react-bootstrap/Alert"
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAdded, setAdd }) {
 
-
-
-    console.log(user.name + " "+ rowID+" "+  reqID )    ;
     //Set Constants
     const date = new Date();
-    //const [displayButton, setButton] = useState()
-    const [msg, setMsg] = useState();
+
     const [proj, setProj] = useState({
         project: "",
         dateapproved: '',
@@ -24,6 +21,8 @@ export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAd
         status: "",
         url: ""
     });
+
+    const [msg, setMsg] = useState();
     const [requester, setRequester] = useState({});
     const [showAlert, setAlert] = useState(false);
     const [submitProj, setSubmit] = useState(false);
@@ -40,7 +39,6 @@ export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAd
     useEffect(() => {
         if (showModal) {
 
-
             fetch("http://localhost:8080/jpa/users/" + reqID, { method: "GET" })
                 .then(res => res.json())
                 .then(res => {
@@ -52,8 +50,6 @@ export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAd
                 .then(res => {
                     setProj(res)
                 });
-
-            console.log(user.name + " "+ requester.name+" "+  user.approver+  " " +proj.status )    ;
 
         }
     }, [rowID, reqID])
@@ -138,6 +134,7 @@ export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAd
                 size="lg"
                 centered
             >
+                
                 <Modal.Header closeButton>
                     <Modal.Title>
                         {proj.project} - {requester.firstname} {requester.lastname}
@@ -196,7 +193,7 @@ export default function PopupInfo({ showModal, onHide, user, rowID, reqID, prjAd
                             </Col>
                             <Col>
                                 <Button
-                                    className={requester.name === user.name ? "btn" : "invisible"}
+                                    className={requester.name === user.name ? "btnDelete" : "invisible"}
                                     onClick={handleDelete}
                                 >
                                     Delete Request

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import { Container, Row } from 'react-bootstrap';
 
 const FooterStyle = styled.div`
     background-color: #e4e4e4;

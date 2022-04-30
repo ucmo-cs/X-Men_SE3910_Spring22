@@ -1,5 +1,18 @@
 @media all and (min-width: 480px) {
 
+  .formBackground{
+    background-color: #e4e4e4;
+    box-sizing: border-box;
+    margin: auto;
+    width: 30%;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+  }
+
+  .formBackground h3{
+    text-align: center;
+  }
+  
   .loginAlert{
     width: 100%;
   }
@@ -14,28 +27,15 @@
     height: 100%;
   }
 
+  .Login button {
+    margin-top: 10px;
+  }
+
   .Login form {
     margin: 0 auto;
     max-width: 20em;
     background-color: #e4e4e4;
     padding: 1em 1em 1em 1em;
-  }
-
-  .formBackground{
-    background-color: #e4e4e4;
-    box-sizing: border-box;
-    margin: auto;
-    width: 30%;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-  }
-
-  .formBackground h3{
-    text-align: center;
-  }
-   
-  .Login button {
-    margin-top: 10px;
   }
 
   .title {

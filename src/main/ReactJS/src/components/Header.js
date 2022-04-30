@@ -1,20 +1,20 @@
 import './Header.css';
 import React, {useState} from 'react';
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Container, Dropdown, Navbar } from 'react-bootstrap';
 
 function ShowUser({user}) {
 
     const isApprover = user.approver;
     const name = user.firstname + " " + user.lastname;
+
     const [navigate, setNavigate] = useState();
 
     const logout = () =>{
         sessionStorage.clear();
         sessionStorage.removeItem("token");
         setNavigate({navigate:true});
-        window.location.href = "/";
-         
+        window.location.href = "/";         
     }
   
     if(navigate){

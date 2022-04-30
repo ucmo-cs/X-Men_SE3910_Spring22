@@ -1,7 +1,7 @@
 import Footer from './components/Footer.js';
-import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login.js';
 import ProjectList from './components/ProjectList.js';
+import { Route, Routes } from 'react-router-dom';
 
 
 function setToken(userToken) {
@@ -13,7 +13,6 @@ function getToken() {
   const userToken = JSON.parse(tokenString);
   return userToken?.token
 }
-
 
 function App() {
 

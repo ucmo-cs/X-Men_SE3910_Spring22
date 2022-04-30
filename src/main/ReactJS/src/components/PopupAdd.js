@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import "./PopupAdd.css";
+import Alert from "react-bootstrap/Alert"
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { Alert, Container, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function PopupAdd({user, prjAdded, setAdd}) {
 
+    const [show, setShow] = useState(false);
     const [showAlert, setAlert] = useState(false);
     const [showSuccess, setSuccess] = useState(false);
-    const [show, setShow] = useState(false);
     const [submitProj, setSubmit] = useState(false);
 
 
@@ -49,9 +51,9 @@ export default function PopupAdd({user, prjAdded, setAdd}) {
 
         }).then((res) => {
             handleClose();
-            setSuccess(true);
             setAdd(!prjAdded);
             setSubmit(false);
+            setSuccess(true);
         }).catch((error) => {
             console.log(error);
             setAlert(true);
@@ -84,14 +86,13 @@ export default function PopupAdd({user, prjAdded, setAdd}) {
 
     }
 
-
     return (
         <div>
             <Alert show={showSuccess} variant='success' onClose={() => setSuccess(false)} dismissible>
                 <Alert.Heading>Project Added Succesfully</Alert.Heading>
             </Alert>
 
-            <Button variant='success' onClick={handleOpen}>
+            <Button variant='success' className="reqButtons" onClick={handleOpen}>
                 Create Request
             </Button>
 
@@ -106,61 +107,60 @@ export default function PopupAdd({user, prjAdded, setAdd}) {
                         Submit A New Project
                     </Modal.Title>
                 </Modal.Header>
+
                 <Alert show={showAlert} variant='danger' onClose={() => setAlert(false)} dismissible>
                     <Alert.Heading>Project wasn't able to be added</Alert.Heading>
                 </Alert>
+
                 <Form>
                     <Modal.Body>
                         <Container>
-                            <Form.Group as={Row}>
+                            <Form.Group as={Row} className="formRow">
                                 <Form.Label column sm="2">Project Name</Form.Label>
                                 <Col>
                                     <Form.Control
                                         autoFocus
                                         type="textarea"
                                         name="project"
-                                        required
                                         onChange={changeValue}
                                     />
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
+                            <Form.Group as={Row} className="formRow">
                                 <Form.Label>Project Decription</Form.Label>
                                 <Form.Control
                                  type="textarea" 
-                                 rows={3} 
                                  name="description"
-                                 required
+                                 rows={3} 
                                  onChange={changeValue}
                                  />
                             </Form.Group>
 
-                            <Form.Group as={Row}>
+                            <Form.Group as={Row} className="formRow">
                                 <Form.Label column sm="2">License</Form.Label>
                                 <Col>
                                     <Form.Control 
                                     type="textarea"
                                     name="license"
-                                    required
                                     onChange={changeValue} 
                                     />
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
+                            <Form.Group as={Row} className="formRow">
                                 <Form.Label column sm="2">URL</Form.Label>
                                 <Col>
                                     <Form.Control
-                                     type="textarea" 
+                                     type="url" 
                                      name="url"
-                                     required
                                      onChange={changeValue}
                                     />
                                 </Col>
                             </Form.Group>
                         </Container>
                     </Modal.Body>
+
                     <Modal.Footer>
                         <Container>
                             <Row>
@@ -169,7 +169,7 @@ export default function PopupAdd({user, prjAdded, setAdd}) {
                                         Submit
                                     </Button>
                                 </Col>
-                                <Col lg='8' />
+                                <Col lg='6' />
                                 <Col>
                                     <Button className="btnCancel" onClick={(handleClose)}>
                                         Cancel
@@ -178,6 +178,7 @@ export default function PopupAdd({user, prjAdded, setAdd}) {
                             </Row>
                         </Container>
                     </Modal.Footer>
+                    
                 </Form>
             </Modal>
 

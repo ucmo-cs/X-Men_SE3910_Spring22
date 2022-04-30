@@ -38,6 +38,22 @@
     color: #3e3e3e !important;
 }
 
+.btnDelete{
+    background-color: #b61919 !important;
+    border-color: #b61919 !important;
+    padding: .5em .5em 2em .5em !important;
+    height: 2.55em;
+    width: 9em;
+}
+
+.btnDelete:focus {
+    box-shadow: 0 0 0 0.2rem #751919 !important;
+}
+
+.btnDelete:hover {
+    background-color: #752119 !important;
+}
+
 .btnDeny{
     background-color: #006649 !important;
     border: .1em solid #006649 !important;
