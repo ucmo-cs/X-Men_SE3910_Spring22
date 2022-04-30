@@ -39,3 +39,9 @@
   - Clicking on table row opens info
   - Allow approving and denying of projects
   - Make log in page look better
+-----------------------------------------------------
+# Project Credit
+- Project Created by the Spring 2022 X-Men team for SE3910 under Professor Taeghyun Kang
+  - Max McGinn @maxmcginn
+  - Blake Legens @blakelegens
+  - Daniel Stanley @djs54860
